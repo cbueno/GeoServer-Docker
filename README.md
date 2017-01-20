@@ -1,14 +1,12 @@
 # docker-geoserver
 
-A simple docker container that runs Geoserver influenced by this docker
-recipe: https://github.com/kartoza/docker-geoserver by Tim Sutton. Created with input from GeoSolutions.
+A simple docker container that runs Geoserver influenced by these dockers recipes: https://github.com/thinkWhere/GeoServer-Docker by thinkWhere and https://github.com/kartoza/docker-geoserver by Tim Sutton. Created with input from GeoSolutions.
 
 This container is configured to build with:
-* Tomcat8.5
+* Tomcat8.5-jre8
 * Openjdk 8 
 * GeoServer 2.8.x / 2.9.x / 2.10.x
 * GeoServer Plugins: Any plugins downloaded to /resources/plugins
-
 
 **Note:** We recommend using ``apt-cacher-ng`` to speed up package fetching -
 you should configure the host for it in the provided 71-apt-cacher-ng file.
@@ -25,7 +23,7 @@ docker pull thinkwhere/geoserver
 To build the image yourself do:
 
 ```shell
-docker build -t thinkwhere/geoserver git://github.com/thinkwhere/geoserver-docker/2.9
+docker build -t thinkwhere/geoserver git://github.com/cbueno/geoserver-docker/2.10.1
 ```
 
 To build with apt-cacher-ng (and minimised download requirements) you need to
@@ -94,7 +92,7 @@ To include native GDAL libraries in the image, set the `GDAL_NATIVE` build-arg t
 when building the image.
 
 ```shell
-docker build --build-arg GDAL_NATIVE=true -t thinkwhere/geoserver-docker .
+docker build --build-arg GDAL_NATIVE=true -t cbueno/geoserver-docker .
 ```
 
 To include the GDAL extension in the final image download the extension and place the zip
@@ -122,7 +120,7 @@ docker run \
 	-p 8080:8080 \
 	-d \
 	-v $HOME/geoserver_data:/opt/geoserver/data_dir \
-	-t thinkwhere/geoserver
+	-t cbueno/geoserver
 ```
 
 ### Running multiple instances on the same machine
@@ -139,7 +137,7 @@ docker run \
 	-d \
 	-v $HOME/geoserver_data:/opt/geoserver/data_dir \
 	-e "GEOSERVER_LOG_LOCATION=/opt/geoserver/data_dir/logs/geoserver_8085.log" \
-	-t thinkwhere/geoserver
+	-t cbueno/geoserver
 ```
 
 ### Setting Tomcat properties
@@ -157,7 +155,7 @@ Then pass the `setenv.sh` file as a volume at `/usr/local/tomcat/bin/setenv.sh` 
 ```shell
 docker run -d \
     -v $HOME/tomcat/setenv.sh:/usr/local/tomcat/bin/setenv.sh \
-    thinkwhere/geserver
+    cbueno/geserver
 ```
 
 This repository contains a ``run.sh`` script for your convenience.
