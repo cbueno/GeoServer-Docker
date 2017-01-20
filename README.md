@@ -1,6 +1,11 @@
 # docker-geoserver
 
+<<<<<<< HEAD
 A simple docker container that runs Geoserver influenced by these dockers recipes: https://github.com/thinkWhere/GeoServer-Docker by thinkWhere and https://github.com/kartoza/docker-geoserver by Tim Sutton. Created with input from GeoSolutions.
+=======
+A simple docker container that runs Geoserver influenced by these dockers
+recipes: https://github.com/thinkWhere/GeoServer-Docker by thinkWhere and https://github.com/kartoza/docker-geoserver by Tim Sutton. Created with input from GeoSolutions.
+>>>>>>> master
 
 This container is configured to build with:
 * Tomcat8.5-jre8
